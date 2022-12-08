@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/53.0f546356.chunk.js","mappings":"6HAMA,UAJsB,WACrB,OAAO,0CACR,C","sources":["pages/User/ResetPassword.tsx"],"sourcesContent":["import React from 'react';\n\nconst ResetPassword = () => {\n\treturn <div>ResetPassword</div>;\n};\n\nexport default ResetPassword;\n"],"names":[],"sourceRoot":""}

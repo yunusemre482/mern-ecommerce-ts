@@ -1,0 +1,18 @@
+{
+	"compileOnSave": true,
+	"compilerOptions": {
+		"target": "es6",
+		"module": "commonjs",
+		"outDir": "./dist",
+		"rootDir": "./",
+		"strict": false,
+		"moduleResolution": "node",
+		"esModuleInterop": true
+	},
+	"buildOptions": {
+		"clean": true
+	},
+	"include": ["/**/*.ts"],
+	"exclude": ["node_modules"]
+
+}

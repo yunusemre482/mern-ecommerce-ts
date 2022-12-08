@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/802.051057f2.chunk.js","mappings":"+HAMA,UAJc,WACb,OAAO,kCACR,C","sources":["pages/Cart/Order.tsx"],"sourcesContent":["import React from 'react';\n\nconst Order = () => {\n\treturn <div>Order</div>;\n};\n\nexport default Order;\n"],"names":[],"sourceRoot":""}

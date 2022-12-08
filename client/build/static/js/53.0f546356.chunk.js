@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkclient=self.webpackChunkclient||[]).push([[53],{53:function(e,n,s){s.r(n);s(791);var t=s(184);n.default=function(){return(0,t.jsx)("div",{children:"ResetPassword"})}}}]);
+//# sourceMappingURL=53.0f546356.chunk.js.map

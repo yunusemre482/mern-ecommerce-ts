@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/872.b1d1461a.chunk.js","mappings":"+HAMA,UAJa,WACZ,OAAO,iCACR,C","sources":["pages/Home/Home.tsx"],"sourcesContent":["import React from 'react';\n\nconst Home = () => {\n\treturn <div>Home</div>;\n};\n\nexport default Home;\n"],"names":[],"sourceRoot":""}

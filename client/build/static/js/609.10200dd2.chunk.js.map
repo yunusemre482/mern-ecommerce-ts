@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/609.10200dd2.chunk.js","mappings":"+HAMA,UAJoB,WACnB,OAAO,wCACR,C","sources":["pages/Admin/ProductList.tsx"],"sourcesContent":["import React from 'react';\n\nconst ProductList = () => {\n\treturn <div>ProductList</div>;\n};\n\nexport default ProductList;\n"],"names":[],"sourceRoot":""}

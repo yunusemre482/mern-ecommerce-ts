@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/91.3ac7ee1b.chunk.js","mappings":"6HAMA,UAJqB,WACpB,OAAO,yCACR,C","sources":["pages/Order/OrderDetails.tsx"],"sourcesContent":["import React from 'react';\n\nconst OrderDetails = () => {\n\treturn <div>OrderDetails</div>;\n};\n\nexport default OrderDetails;\n"],"names":[],"sourceRoot":""}

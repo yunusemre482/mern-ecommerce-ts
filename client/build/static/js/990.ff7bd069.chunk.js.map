@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/990.ff7bd069.chunk.js","mappings":"+HAMA,UAJsB,WACrB,OAAO,0CACR,C","sources":["pages/User/UpdateProfile.tsx"],"sourcesContent":["import React from 'react';\n\nconst UpdateProfile = () => {\n\treturn <div>UpdateProfile</div>;\n};\n\nexport default UpdateProfile;\n"],"names":[],"sourceRoot":""}

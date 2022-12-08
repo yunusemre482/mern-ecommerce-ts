@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/656.3df930ae.chunk.js","mappings":"+HAMA,UAJuB,WACtB,OAAO,2CACR,C","sources":["pages/User/ForgotPassword.tsx"],"sourcesContent":["import React from 'react';\n\nconst ForgotPassword = () => {\n\treturn <div>ForgotPassword</div>;\n};\n\nexport default ForgotPassword;\n"],"names":[],"sourceRoot":""}

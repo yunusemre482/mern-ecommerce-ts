@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/631.c255f20c.chunk.js","mappings":"+HAMA,UAJqB,WACpB,OAAO,yCACR,C","sources":["pages/User/Confirmation.tsx"],"sourcesContent":["import React from 'react';\n\nconst Confirmation = () => {\n\treturn <div>Confirmation</div>;\n};\n\nexport default Confirmation;\n"],"names":[],"sourceRoot":""}

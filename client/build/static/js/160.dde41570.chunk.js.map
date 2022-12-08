@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/160.dde41570.chunk.js","mappings":"+HAMA,UAJiB,WAChB,OAAO,qCACR,C","sources":["pages/Order/MyOrders.tsx"],"sourcesContent":["import React from 'react';\n\nconst MyOrders = () => {\n\treturn <div>MyOrders</div>;\n};\n\nexport default MyOrders;\n"],"names":[],"sourceRoot":""}

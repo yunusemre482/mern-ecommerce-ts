@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/7.7b88e635.chunk.js","mappings":"2HAMA,UAJgB,WACf,OAAO,oCACR,C","sources":["pages/Admin/Sidebar.tsx"],"sourcesContent":["import React from 'react';\n\nconst Sidebar = () => {\n\treturn <div>Sidebar</div>;\n};\n\nexport default Sidebar;\n"],"names":[],"sourceRoot":""}

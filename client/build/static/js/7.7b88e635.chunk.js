@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkclient=self.webpackChunkclient||[]).push([[7],{7:function(e,n,c){c.r(n);c(791);var i=c(184);n.default=function(){return(0,i.jsx)("div",{children:"Sidebar"})}}}]);
+//# sourceMappingURL=7.7b88e635.chunk.js.map

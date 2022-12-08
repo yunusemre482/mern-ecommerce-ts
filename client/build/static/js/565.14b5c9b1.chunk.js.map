@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/565.14b5c9b1.chunk.js","mappings":"+HAMA,UAJiB,WAChB,OAAO,qCACR,C","sources":["pages/Product/Products.tsx"],"sourcesContent":["import React from 'react';\n\nconst Products = () => {\n\treturn <div>Products</div>;\n};\n\nexport default Products;\n"],"names":[],"sourceRoot":""}
