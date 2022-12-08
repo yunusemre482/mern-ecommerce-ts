@@ -1,9 +1,8 @@
 import { IUserModel } from './../types/user.types';
 import { Request, NextFunction } from 'express';
 import { CustomResponse } from '../types/response.types';
-import { validateIsPasswordMatch } from '../utils/validator';
+import { User } from '../models';
 
-import User from '../models/User.model';
 const register = async (req: Request, res: CustomResponse) => {
 	try {
 		const { email, username, password, confirmPassword } = req.body;

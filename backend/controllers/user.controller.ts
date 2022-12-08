@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import User from '../models/User.model';
+import { User } from '../models';
 import { CustomResponse } from '../types/response.types';
 
 export const getAllUsers = async (req: Request, res: CustomResponse, next: NextFunction) => {

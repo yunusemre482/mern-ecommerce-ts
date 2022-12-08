@@ -7,9 +7,16 @@ import orderRouter from './orderRouter';
 import productRouter from './productRouter';
 import authorizationMiddleware from '../middleware/auth';
 import { File } from 'multer';
+
+// extend express request interface to include user and file
 declare module 'express' {
 	export interface Request {
 		file: File;
+		user: {
+			id: string;
+			username: string;
+			email: string;
+		};
 	}
 }
 

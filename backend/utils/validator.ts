@@ -55,14 +55,59 @@ export const SUDOOptionalUserAccessLevel = [
 		}),
 ];
 
-export const validateIsPasswordMatch = ({
-	password,
-	modelPassword,
-}: {
-	password: string;
-	modelPassword: string;
-}): boolean => {
-	console.log(password, modelPassword);
-	
-	return bcrypt.compareSync(password, modelPassword);
-};
+export const productValidation = [
+	check('name', 'name is required')
+		.not()
+		.isEmpty()
+		.isLength({ min: 3 })
+		.withMessage('name must be at least 3 characters long'),
+	check('price', 'price is required')
+		.not()
+		.isEmpty()
+		.isNumeric()
+		.withMessage('price must be a number'),
+	check('brand', 'brand is required').not().isEmpty(),
+	check('category', 'category is required').not().isEmpty(),
+	check('description', 'description is required').not().isEmpty(),
+	check('countInStock', 'countInStock is required')
+		.not()
+		.isEmpty()
+		.isNumeric()
+		.withMessage('countInStock must be a number'),
+];
+
+export const updateProductValidation = [
+	check('name', 'name is required')
+		.not()
+		.isEmpty()
+		.isLength({ min: 3 })
+		.withMessage('name must be at least 3 characters long')
+		.optional(),
+	check('price', 'price is required')
+		.not()
+		.isEmpty()
+
+		.isNumeric()
+		.withMessage('price must be a number')
+		.optional(),
+
+	check('brand', 'brand is required').not().isEmpty().optional(),
+	check('category', 'category is required').not().isEmpty().optional(),
+	check('description', 'description is required').not().isEmpty().optional(),
+	check('countInStock', 'countInStock is required')
+		.not()
+		.isEmpty()
+		.isNumeric()
+		.withMessage('countInStock must be a number')
+		.optional(),
+];
+
+export const productReviewValidation = [
+	check('rating', 'rating is required')
+		.not()
+		.isEmpty()
+		.isNumeric()
+		.withMessage('rating must be a number'),
+	check('comment', 'comment is required').not().isEmpty(),
+	check('name', 'name is required').not().isEmpty(),
+];

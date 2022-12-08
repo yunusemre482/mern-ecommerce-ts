@@ -37,7 +37,9 @@
 		"passport": "^0.6.0",
 		"passport-jwt": "^4.0.0",
 		"path": "^0.12.7",
-		"streamifier": "^0.1.1"
+		"slugify": "^1.6.5",
+		"streamifier": "^0.1.1",
+		"uuid": "^9.0.0"
 	},
 	"devDependencies": {
 		"@types/bcrypt": "^5.0.0",
