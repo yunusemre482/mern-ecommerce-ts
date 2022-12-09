@@ -1,11 +1,10 @@
 import { IUserModel } from './../types/user.types';
-import { Request, NextFunction } from 'express';
-import { CustomResponse } from '../types/response.types';
+import { Request, Response } from 'express';
 import { User } from '../models';
 
-const register = async (req: Request, res: CustomResponse) => {
+const register = async (req: Request, res: Response) => {
 	try {
-		const { email, username, password, confirmPassword } = req.body;
+		const { email, username, role, password, confirmPassword } = req.body;
 
 		const existingUser = await User.aggregate([
 			{
@@ -24,6 +23,7 @@ const register = async (req: Request, res: CustomResponse) => {
 		const user = new User({
 			email,
 			username,
+			role,
 			password,
 			confirmPassword,
 		});
@@ -46,12 +46,12 @@ const register = async (req: Request, res: CustomResponse) => {
 	}
 };
 
-const login = async (req: Request, res: CustomResponse) => {
-	const { username, email, password }: IUserModel = req.body;
+const login = async (req: Request, res: Response) => {
+	const { username, password }: IUserModel = req.body;
 
 	try {
 		const user: IUserModel = await User.findOne({
-			$or: [{ email: email }, { username: username }],
+			$or: [{ email: username }, { username: username }],
 		});
 
 		if (!user) {

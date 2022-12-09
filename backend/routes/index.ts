@@ -18,6 +18,10 @@ declare module 'express' {
 			email: string;
 		};
 	}
+
+	export interface Response {
+		json: (data: any) => Response;
+	}
 }
 
 const configureRoutes = (app: Express): Router => {

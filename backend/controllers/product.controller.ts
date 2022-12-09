@@ -1,10 +1,9 @@
 import { imageUploader } from './../utils/uploader';
 import { NextFunction, Request, Response } from 'express';
 import { Product } from '../models';
-import { CustomResponse } from '../types/response.types';
 import slugify from 'slugify';
 
-const getAllProducts = async (req: Request, res: CustomResponse, next: NextFunction) => {
+const getAllProducts = async (req: Request, res: Response, next: NextFunction) => {
 	const products = await Product.find({});
 	if (!products) {
 		return res.json({
@@ -17,7 +16,7 @@ const getAllProducts = async (req: Request, res: CustomResponse, next: NextFunct
 	return res.json({ success: true, data: { products }, error: null });
 };
 
-const getProductById = async (req: Request, res: CustomResponse, next: NextFunction) => {
+const getProductById = async (req: Request, res: Response, next: NextFunction) => {
 	const { id } = req.params;
 	const product = await Product.findById(id).populate('reviews', 'name comment rating');
 
@@ -32,7 +31,7 @@ const getProductById = async (req: Request, res: CustomResponse, next: NextFunct
 	return res.json({ success: true, data: { product }, error: null });
 };
 
-const createProduct = async (req: Request, res: CustomResponse, next: NextFunction) => {
+const createProduct = async (req: Request, res: Response, next: NextFunction) => {
 	const file = req.file;
 	const { name, category, price, brand, description, countInStock } = req.body;
 	const slug = slugify(name);
@@ -72,7 +71,7 @@ const createProduct = async (req: Request, res: CustomResponse, next: NextFuncti
 	return res.json({ success: true, data: { product: newProduct }, error: null });
 };
 
-const updateProduct = async (req: Request, res: CustomResponse, next: NextFunction) => {
+const updateProduct = async (req: Request, res: Response, next: NextFunction) => {
 	const { id } = req.params;
 	const file = req.file;
 	const { name } = req.body;
@@ -113,7 +112,7 @@ const updateProduct = async (req: Request, res: CustomResponse, next: NextFuncti
 	});
 };
 
-const deleteProduct = async (req: Request, res: CustomResponse, next: NextFunction) => {
+const deleteProduct = async (req: Request, res: Response, next: NextFunction) => {
 	const { id } = req.params;
 	const product = await Product.findByIdAndDelete(id);
 
@@ -132,7 +131,7 @@ const deleteProduct = async (req: Request, res: CustomResponse, next: NextFuncti
 	});
 };
 
-const createProductReview = async (req: Request, res: CustomResponse, next: NextFunction) => {
+const createProductReview = async (req: Request, res: Response, next: NextFunction) => {
 	const { id } = req.params;
 	const username = req.user.username;
 	const { comment, rating } = req.body;
@@ -179,7 +178,7 @@ const createProductReview = async (req: Request, res: CustomResponse, next: Next
 	});
 };
 
-const getCategories = async (req: Request, res: CustomResponse, next: NextFunction) => {
+const getCategories = async (req: Request, res: Response, next: NextFunction) => {
 	const categories = await Product.find().distinct('category');
 
 	if (!categories) {

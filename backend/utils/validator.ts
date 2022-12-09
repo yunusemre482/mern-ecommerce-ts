@@ -1,5 +1,5 @@
-import { check } from 'express-validator/check';
-import bcrypt from 'bcrypt';
+import { check } from 'express-validator';
+
 export const registrationValidation = [
 	check('username', 'username is required')
 		.not()
@@ -21,6 +21,7 @@ export const registrationValidation = [
 			}
 			return true;
 		}),
+	check('role', 'role is required').not().isEmpty(),
 ];
 
 export const loginValidation = [

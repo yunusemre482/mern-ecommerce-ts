@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+@font-face {
+	src: url('https://fonts.googleapis.com/css?family=Nunito');
+	font-family: 'Nunito', sans-serif;
+}
+
+@font-face {
+	font-family: 'TakeIt';
+	src: url('../assets/fonts/takeit-sorts-mill-goudy-regular.ttf');
+}
+
+:root {
+	// Colors
+	--color-font-primary: #101010;
+	--color-font-secondary: #ffffff;
+	--color-primary-white: #ffffff;
+
+	--color-font-link: #1155ff;
+
+	--color-primary: #ff5733;
+	--color-primary-dark: #e72e07;
+	--color-primary-darker: #b21f00;
+	--color-primary-light: #ff7558;
+	--color-primary-lighter: #ff9882;
+
+	--color-secondary: #ff9d33;
+	--color-secondary-dark: #e77b07;
+	--color-secondary-darker: #b25d00;
+	--color-secondary-light: #ffaf58;
+	--color-secondary-lighter: #ffc382;
+
+	--color-secondary-2: #d92b75;
+	--color-secondary-2-dark: #c50656;
+	--color-secondary-2-darker: #980040;
+	--color-secondary-2-light: #e14e8c;
+	--color-secondary-2-lighter: #eb78a8;
+
+	--color-complementary: #25b95c;
+	--color-complementary-dark: #05a841;
+	--color-complementary-darker: #008130;
+	--color-complementary-light: #45c775;
+	--color-complementary-lighter: #6fd996;
+
+	--color-image-background: #20d2d98f;
+
+	--color-grayscale-1: #fcfcfc;
+	--color-grayscale-2: #e6e6e6;
+	--color-grayscale-3: #cccccc;
+	--color-grayscale-4: #999999;
+	--color-grayscale-5: #666666;
+	--color-grayscale-6: #333333;
+}
