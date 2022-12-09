@@ -1,7 +1,8 @@
-import { Suspense } from 'react';
+import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Home } from '../pages/Home';
 import ProtectedRoute from './ProtectedRoute';
+import PublicRoute from './PublicRouter';
 import {
 	Login,
 	Register,
@@ -15,16 +16,11 @@ import { ProductDetail, Products } from '../pages/Product';
 import { MyOrders, OrderDetails } from '../pages/Order';
 import { Cart, Order } from '../pages/Cart';
 import { Dashboard, ProductList, UsersList } from '../pages/Admin';
-import { Outlet } from 'react-router';
 
 const ROUTES = {
 	public: [
 		{
 			path: '',
-			component: Home,
-		},
-		{
-			path: 'home',
 			component: Home,
 		},
 		{
@@ -102,12 +98,9 @@ const ROUTES = {
 	],
 };
 
-type AppRouterProps = {
-	role: string;
-	isAuthenticated: boolean;
-};
+type Props = {};
 
-const AppRouter = ({ role, isAuthenticated }: AppRouterProps) => {
+const AppRouter: React.FC<Props> = () => {
 	return (
 		<Router>
 			<Suspense fallback={<div>Loading...</div>}>
@@ -130,7 +123,7 @@ const AppRouter = ({ role, isAuthenticated }: AppRouterProps) => {
 								key={index + route.path}
 								path={route.path}
 								element={
-									<ProtectedRoute roles={['user']}>
+									<ProtectedRoute allowedRoles={route.allowedRoles}>
 										<Component />
 									</ProtectedRoute>
 								}

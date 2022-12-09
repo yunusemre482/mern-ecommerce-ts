@@ -1,0 +1,186 @@
+.login__form_container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+	background: var(--color-grayscale-1);
+	gap: 2rem;
+
+	.form__title {
+		font-family: Nunito, sans-serif;
+		font-weight: 700;
+		font-size: 2rem;
+		color: var(--color-font-primary);
+		text-transform: capitalize;
+		text-align: left;
+		width: clamp(300px, 50%, 360px);
+		padding-left: 0.5rem;
+	}
+
+	.form__card {
+		display: flex;
+		width: clamp(300px, 50%, 360px);
+		height: clamp(300px, 50%, 400px);
+		padding: 1rem 2rem;
+		border-radius: 0.5rem;
+		box-shadow: 0 0 0.5rem 0.5rem var(--color-grayscale-2);
+		background-color: var(--color-primary-white);
+		form {
+			display: flex;
+			flex-direction: column;
+			width: 100%;
+			height: 100%;
+			gap: 1.5rem;
+			.form__inputs {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				width: 100%;
+				height: 70%;
+				gap: 1rem;
+
+				.form__input_cont {
+					display: flex;
+					width: 100%;
+					flex-direction: column;
+					gap: 0.5rem;
+					font-family: Nunito, sans-serif;
+					label {
+						font-weight: 700;
+						font-size: 0.825rem;
+						color: var(--color-grayscale-4);
+						text-transform: capitalize;
+						padding-left: 0.25rem;
+					}
+					input {
+						border: 1px solid var(--color-grayscale-3);
+						background: var(--color-font-secondary);
+						outline: none;
+						border-radius: 0.5rem;
+						padding: 0.5rem;
+						height: 2.5rem;
+						font-weight: 700;
+						font-size: 0.825rem;
+						color: var(--color-font-primary);
+
+						&::placeholder {
+							/* Chrome, Firefox, Opera, Safari 10.1+ */
+							color: var(--color-grayscale-4);
+							opacity: 1; /* Firefox */
+						}
+					}
+					.error {
+						width: 100%;
+						height: 5px;
+						color: #d10303;
+						font-size: 0.8em;
+						margin: 0.8em 8px auto;
+
+						@media screen and (min-width: 1200px) {
+							font-size: 0.9em;
+						}
+					}
+				}
+				.forgot__password {
+					display: flex;
+					align-items: center;
+					justify-content: flex-end;
+
+					a {
+						font-family: Nunito, sans-serif;
+						font-weight: 700;
+						font-size: 0.825rem;
+						color: var(--color-secondary-darker);
+						text-transform: capitalize;
+						text-decoration: none;
+						transition: all 0.2s ease-in-out;
+
+						&:hover {
+							color: var(--color-secondary-dark);
+						}
+					}
+				}
+			}
+			.form__footer {
+				display: flex;
+				flex-direction: row;
+				justify-content: center;
+				align-items: center;
+				gap: 5px;
+				width: 100%;
+				gap: 10px;
+				padding: 10px;
+				font-family: Nunito, sans-serif;
+
+				a {
+					background-color: transparent;
+					color: #3880ff;
+				}
+			}
+			.login__submit_btn {
+				width: 100%;
+				height: 2.5rem;
+				border: none;
+				border-radius: 0.5rem;
+				outline: none;
+				background-color: var(--color-secondary-dark);
+				color: var(--color-font-secondary);
+				letter-spacing: 0.1rem;
+				font-weight: 700;
+				text-transform: uppercase;
+				cursor: pointer;
+				transition: all 0.2s ease-in-out;
+
+				&:hover {
+					box-shadow: 0 0 0.5rem 0.5rem var(--color-grayscale-2);
+				}
+			}
+		}
+	}
+}
+
+.side_image_container {
+	display: flex;
+	width: 100%;
+	height: 100%;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+	background-color: var(--color-primary);
+	padding: 5% 0;
+	gap: 2rem;
+	.side_image {
+		width: clamp(200px, 50%, 400px);
+		height: auto;
+		object-fit: cover;
+	}
+	.login_side_description {
+		font-family: Nunito, sans-serif;
+		font-weight: 700;
+		font-size: 3rem;
+		color: var(--color-font-secondary);
+		text-transform: capitalize;
+		padding: 1rem 2rem;
+		margin-top: 1.5rem;
+
+		.desc_second_part {
+			padding: 0 1rem;
+			color: var(--color-font-secondary);
+			border-radius: 0.2rem;
+			background: linear-gradient(
+				90deg,
+				var(--color-secondary-lighter) 0%,
+				var(--color-secondary-light) 20%,
+				var(--color-secondary) 40%,
+				var(--color-secondary-dark) 60%,
+				var(--color-secondary-darker) 80%
+			);
+			b {
+				text-transform: capitalize;
+				color: var(--color-secondary-2-darker);
+			}
+		}
+	}
+}

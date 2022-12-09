@@ -1,11 +1,17 @@
 import { Navigate } from 'react-router-dom';
-import useAuth from './useAuth';
+
+import useBoundStore from '../store';
 interface IPrivateProps {
 	children?: React.ReactNode;
-	roles?: string[];
+	allowedRoles: string[];
 }
-const PrivateRoute = ({ children, roles }: IPrivateProps) => {
-	const { isAuthenticated, isAllow } = useAuth({ roles });
+const PrivateRoute: React.FC<IPrivateProps> = ({ children, allowedRoles }) => {
+	const { role, isAuthenticated } = useBoundStore((state) => ({
+		role: state.user?.role || 'user',
+		isAuthenticated: state.isAuthenticated,
+	}));
+
+	const isAllow = allowedRoles.includes(role);
 
 	if (!isAuthenticated) {
 		return <Navigate to={'/login'} replace />;
