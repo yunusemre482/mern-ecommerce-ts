@@ -16,6 +16,7 @@ export const productSchema = new mongoose.Schema<IProduct>(
 		rating: { type: Number },
 		numReviews: { type: Number },
 		reviews: [reviewSchema],
+		likedBy: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
 	},
 	{
 		timestamps: true,

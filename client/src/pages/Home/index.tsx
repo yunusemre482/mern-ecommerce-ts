@@ -1,4 +1,3 @@
-import { lazy } from 'react';
-const Home = lazy(() => import('./Home'));
+import Home from './Home';
 
 export { Home };

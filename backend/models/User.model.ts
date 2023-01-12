@@ -13,6 +13,7 @@ export const userSchema = new Schema<IUserModel>(
 		email: { type: String, required: true, unique: true },
 		password: { type: String, required: true },
 		role: { type: String, required: false, default: 'user' },
+		likedProducts: [{ type: Schema.Types.ObjectId, ref: 'Product' }],
 		cart: [
 			{
 				product: {

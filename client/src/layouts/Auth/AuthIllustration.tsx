@@ -1,9 +1,9 @@
 import React from 'react';
 import sideImage from 'assets/images/ecommerce.png';
-import styles from './Login.module.scss';
-import Logo from 'components/shared/TakeItLogo';
+import styles from './AuthLayout.module.scss';
 import TakeItTitle from 'components/shared/TakeItTitle';
-const SideImage = () => {
+
+const AuthIllustration = () => {
 	return (
 		<div className={styles.side_image_container}>
 			<TakeItTitle />
@@ -19,4 +19,4 @@ const SideImage = () => {
 	);
 };
 
-export default SideImage;
+export default AuthIllustration;

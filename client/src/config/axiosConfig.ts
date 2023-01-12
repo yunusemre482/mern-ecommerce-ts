@@ -1,30 +1,32 @@
 import axios from 'axios';
-const axiosClient = axios.create();
+import useStore from 'store';
 
-axiosClient.defaults.baseURL = 'http://localhost:5000/api/v1';
-axiosClient.defaults.headers.post['Content-Type'] = 'application/json';
-axiosClient.defaults.withCredentials = true;
+const axiosInstance = axios.create({
+	baseURL: 'http://localhost:5000/api/v1',
+});
 
-export async function getRequest(URL: string) {
-	return await axiosClient.get(`${URL}`).then((response) => response);
-}
+axiosInstance.interceptors.request.use(
+	function (config) {
+		// set token to request header
+		const token = localStorage.getItem('authToken');
+		if (token) {
+			config.headers
+				? (config.headers.Authorization = `Bearer ${token}`)
+				: (config.headers = { Authorization: `Bearer ${token}` });
+		}
 
-export async function postRequest(URL: string, payload: any) {
-	return await axiosClient.post(`${URL}`, payload).then((response) => response);
-}
+		console.log('Request sent', config);
 
-export async function patchRequest(URL: string, payload: any) {
-	return await axiosClient.patch(`${URL}`, payload).then((response) => response);
-}
-
-export async function deleteRequest(URL: string) {
-	return await axiosClient.delete(`${URL}`).then((response) => response);
-}
-
-export const setAuthToken = (token: string) => {
-	if (token) {
-		axiosClient.defaults.headers.common['Authorization'] = token;
-	} else {
-		delete axiosClient.defaults.headers.common['Authorization'];
+		return config;
+	},
+	function (error) {
+		const logout = useStore.getState().logout;
+		const { status } = error.response;
+		if (status === 401) {
+			logout();
+		}
+		return Promise.reject(error);
 	}
-};
+);
+
+export default axiosInstance;

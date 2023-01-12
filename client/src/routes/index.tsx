@@ -2,7 +2,8 @@ import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Home } from '../pages/Home';
 import ProtectedRoute from './ProtectedRoute';
-import PublicRoute from './PublicRouter';
+import { Navbar } from 'layouts';
+
 import {
 	Login,
 	Register,
@@ -12,6 +13,7 @@ import {
 	Confirmation,
 } from '../pages/User';
 
+import { PageNotFound } from 'pages/404NotFound';
 import { ProductDetail, Products } from '../pages/Product';
 import { MyOrders, OrderDetails } from '../pages/Order';
 import { Cart, Order } from '../pages/Cart';
@@ -42,6 +44,10 @@ const ROUTES = {
 		{
 			path: 'confirmation/:token',
 			component: Confirmation,
+		},
+		{
+			path: '*',
+			component: PageNotFound,
 		},
 	],
 	private: [
@@ -95,6 +101,11 @@ const ROUTES = {
 			component: ResetPassword,
 			allowedRoles: ['user', 'admin'],
 		},
+		{
+			path: 'profile',
+			component: Profile,
+			allowedRoles: ['user', 'admin'],
+		},
 	],
 };
 
@@ -115,21 +126,23 @@ const AppRouter: React.FC<Props> = () => {
 							/>
 						);
 					})}
-
-					{ROUTES.private.map((route, index) => {
-						const Component = route.component;
-						return (
-							<Route
-								key={index + route.path}
-								path={route.path}
-								element={
-									<ProtectedRoute allowedRoles={route.allowedRoles}>
-										<Component />
-									</ProtectedRoute>
-								}
-							/>
-						);
-					})}
+					<React.Fragment>
+						{ROUTES.private.map((route, index) => {
+							const Component = route.component;
+							return (
+								<Route
+									key={index + route.path}
+									path={route.path}
+									element={
+										<ProtectedRoute allowedRoles={route.allowedRoles}>
+											<Navbar />
+											<Component />
+										</ProtectedRoute>
+									}
+								/>
+							);
+						})}
+					</React.Fragment>
 				</Routes>
 			</Suspense>
 		</Router>

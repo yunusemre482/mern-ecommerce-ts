@@ -1,8 +1,8 @@
-import { IUser } from './../types/user.types';
+import { IUser, IRegisterUser, ILoginUser } from './../types/user.types';
 import { ProductState } from './productSlice';
 import { immer } from 'zustand/middleware/immer';
 import { StateCreator } from 'zustand';
-import { postRequest, getRequest, setAuthToken } from '../config/axiosConfig';
+import axios from 'config/axiosConfig';
 
 type State = {
 	user: IUser | null;
@@ -12,9 +12,9 @@ type State = {
 };
 
 type Actions = {
-	login: ({ username, password }: { username: string; password: string }) => void;
+	login: (payload: ILoginUser) => void;
 	logout: () => void;
-	register: () => void;
+	register: (payload: IRegisterUser) => void;
 };
 
 export type UserState = State & Actions;
@@ -24,13 +24,11 @@ export const userSlice: StateCreator<UserState & ProductState, [], [], UserState
 	isAuthenticated: false,
 	loading: false,
 	error: null,
-	login: async ({ username, password }: { username: string; password: string }) => {
+	login: async (payload: ILoginUser) => {
 		set((state) => ({ ...state, loading: true }));
 
-		const { data, error, success } = await postRequest('/auth/login', {
-			username,
-			password,
-		})
+		const { data, error, success } = await axios
+			.post('/auth/login', payload)
 			.then((res) => res.data)
 			.catch((err) => set((state) => ({ ...state, error: err })));
 		if (error) {
@@ -40,10 +38,26 @@ export const userSlice: StateCreator<UserState & ProductState, [], [], UserState
 		if (success) {
 			const token = data.token;
 			localStorage.setItem('authToken', token);
-			setAuthToken(token);
 			set((state) => ({ ...state, user: data.user, isAuthenticated: true, loading: false }));
 		}
 	},
-	logout: () => {},
-	register: () => {},
+	logout: () => {
+		localStorage.removeItem('authToken');
+		set((state) => ({ ...state, user: null, isAuthenticated: false }));
+	},
+	register: async (payload: IRegisterUser) => {
+		set((state) => ({ ...state, loading: true }));
+
+		const { error, success } = await axios
+			.post('/auth/register', payload)
+			.then((res) => res.data)
+			.catch((err) => set((state) => ({ ...state, error: err })));
+
+		if (error) {
+			set((state) => ({ ...state, error: error, loading: false }));
+		}
+		if (success) {
+			window.location.href = '/login';
+		}
+	},
 });

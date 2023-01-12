@@ -10,6 +10,7 @@ export type IProductReview = {
 };
 
 export type IProduct = Document & {
+	_doc: any;
 	name: string;
 	image: string;
 	images: string[];
@@ -25,6 +26,7 @@ export type IProduct = Document & {
 	};
 	createdAt: Date;
 	updatedAt: Date;
+	likedBy: string[];
 };
 export type IMulterFile = {
 	buffer: Buffer;

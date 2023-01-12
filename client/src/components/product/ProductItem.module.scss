@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&family=Oxygen:wght@700&display=swap');
+
+.product__wrapper {
+	position: relative;
+	border-radius: 0.5rem;
+	overflow: hidden;
+	width: clamp(200px, 25%, 240px);
+	height: 400px;
+	box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+	transition: all 0.2s ease-in-out;
+	display: flex;
+	justify-content: space-between;
+	flex-direction: column;
+	gap: 1rem;
+	cursor: pointer;
+	
+
+	&:hover {
+		box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+		transform: translateY(-0.5rem);
+	}
+	padding: 0.5rem;
+
+	.product__image__overlay {
+		display: flex;
+		flex-direction: column;
+		flex: 3;
+		border-radius: 5px;
+		overflow: hidden;
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+
+	.product__body {
+		flex: 2;
+		display: flex;
+		flex-direction: column;
+		.addToCart__btn {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 0.5rem;
+			width: 100%;
+			height: 2rem;
+			margin-top: auto;
+			font-weight: 600;
+			border: none;
+			text-transform: uppercase;
+			border-radius: 0.5rem;
+			background-color: var(--color-primary);
+			color: var(--color-grayscale-1);
+			cursor: pointer;
+
+			&:hover {
+				color: var(--color-primary-white);
+				background-color: var(--color-primary-dark);
+			}
+		}
+
+		.product__name {
+			font-size: 12px;
+			font-weight: 600;
+			line-height: 16px;
+			height: 32px;
+			margin-bottom: 4px;
+			margin-top: 0px;
+			overflow: hidden;
+		}
+
+		.product__price {
+			margin-right: 5px;
+			line-height: 20px;
+			font-weight: 600;
+			color: var(--color-primary);
+			font-size: 16px;
+			font-family: 'Oxygen', sans-serif;
+
+			span {
+				font-size: 1rem;
+				font-weight: 600;
+			}
+		}
+		.product__title {
+			font-size: 1.2rem;
+			font-weight: 500;
+			margin: 0.5rem 0;
+		}
+	}
+}
+
+.favButton {
+	position: absolute;
+	top: 10px;
+	right: 12px;
+	background-color: var(--color-grayscale-2);
+	width: 2rem;
+	height: 2rem;
+	border-radius: 50%;
+	border: 1px solid var(--color-gray);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	transition: all 0.2s ease-in-out;
+	color: var(--color-grayscale-6);
+
+	&:hover {
+		color: var(--color-primary);
+		background-color: var(--color-grayscale-2);
+	}
+}

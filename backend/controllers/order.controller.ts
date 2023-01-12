@@ -1,6 +1,7 @@
 import { Order } from '../models';
 import { Request, Response, NextFunction } from 'express';
 
+
 const getAllOrders = async (req: Request, res: Response, next: NextFunction) => {
 	try {
 		const orders = await Order.find({}).populate('user', 'name email');

@@ -1,8 +1,16 @@
 @import 'variables';
 @import 'mixins';
 @import 'reset';
-
-
+@import 'globals';
 body {
 	font-family: Nunito, sans-serif;
+	background: var(--color-bg-primary);
+}
+
+.visible {
+	visibility: visible;
+}
+
+.hidden {
+	visibility: hidden;
 }

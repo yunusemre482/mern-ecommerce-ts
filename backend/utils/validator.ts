@@ -21,7 +21,7 @@ export const registrationValidation = [
 			}
 			return true;
 		}),
-	check('role', 'role is required').not().isEmpty(),
+	check('role', 'role is required').not().isEmpty().optional(),
 ];
 
 export const loginValidation = [

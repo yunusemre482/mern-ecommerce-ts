@@ -7,6 +7,7 @@ export type IUserMethods = {
 
 export type IUserModel = Document &
 	IUserMethods & {
+		_doc: any;
 		firstName: string;
 		secondName: string;
 		username: string;
@@ -15,6 +16,7 @@ export type IUserModel = Document &
 		createdAt: Date;
 		updatedAt: Date;
 		role: string;
+		likedProducts: string[];
 		cart: {
 			product: {
 				type: mongoose.Schema.Types.ObjectId;

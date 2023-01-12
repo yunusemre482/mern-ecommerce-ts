@@ -12,6 +12,7 @@
 
 :root {
 	// Colors
+	--color-bg-primary: #faf9f9;
 	--color-font-primary: #101010;
 	--color-font-secondary: #ffffff;
 	--color-primary-white: #ffffff;
@@ -50,4 +51,11 @@
 	--color-grayscale-4: #999999;
 	--color-grayscale-5: #666666;
 	--color-grayscale-6: #333333;
+
+	//Border Radius
+	--border-radius-primary: 0.5rem;
+	--border-radius-secondary: 0.825rem;
+	--border-radius-half: 50%;
+
+	--box-shadow-1: 1px 1px 35px 20px rgba(255, 255, 255, 0.34);
 }

@@ -1,20 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import useBoundStore from 'store';
-import SplitScreen from 'layouts/SplitScreen/SplitScreen';
-import { LoginForm, SideImage } from 'components/user/Login';
+import { AuthLayout } from 'layouts';
+import { LoginForm } from 'components/user/Login';
+import { ILoginUser } from 'types/user.types';
+import { Navigate } from 'react-router-dom';
 type Props = {};
 
 const Login: React.FC<Props> = () => {
 	const login = useBoundStore((state) => state.login);
+	const isAuthenticated = useBoundStore((state) => state.isAuthenticated);
 
-	const [username, setUsername] = React.useState('');
-	const [password, setPassword] = React.useState('');
+	if (isAuthenticated) {
+		return <Navigate to='/profile' />;
+	}
 
-	const handleLogin = (values: { username: string; password: string }) => {
-		login({ username, password });
+	const handleLogin = (values: ILoginUser) => {
+		login(values);
 	};
 
-	return <SplitScreen right={<SideImage />} left={<LoginForm handleSubmit={handleLogin} />} />;
+	return (
+		<AuthLayout>
+			<LoginForm handleSubmit={handleLogin} />
+		</AuthLayout>
+	);
 };
 
 export default Login;

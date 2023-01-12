@@ -21,7 +21,7 @@
 	justify-content: center;
 	align-items: center;
 	h3 {
-		font-size: 5rem;
+		font-size: 2.125rem;
 		font-weight: 700;
 		color: var(--color-font-secondary);
 		font-family: TakeIt;
@@ -29,5 +29,15 @@
 		b {
 			color: var(--color-secondary-2-darker);
 		}
+	}
+}
+
+.xs {
+	display: flex;
+	width: 200px;
+	padding: 0;
+	h3 {
+		font-size: 1.825rem;
+		color: var(--color-grayscale-4);
 	}
 }

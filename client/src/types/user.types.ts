@@ -5,8 +5,10 @@ export type ILoginUser = {
 	password: string;
 };
 
-export type IRegisterUser = {
-	
+export type IRegisterUser = ILoginUser & {
+	role?: string;
+	email: string;
+	confirmPassword: string;
 };
 
 export type IUser = {

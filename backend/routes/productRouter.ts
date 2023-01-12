@@ -34,6 +34,9 @@ productRouter.post(
 	productController.createProductReview
 );
 
+productRouter.post('/like', productController.toggleLikeProduct);
+productRouter.get('/dislike', productController.toggleLikeProduct);
+
 productRouter.get('/categories', productController.getCategories);
 
 // put this at the end of the file to avoid conflicts with other routes

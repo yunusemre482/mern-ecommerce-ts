@@ -1,8 +1,9 @@
 import passport from 'passport';
 import { Request, Response, NextFunction } from 'express';
 
-
 const authorizationMiddleware = (req: Request, res: Response, next: NextFunction) => {
+	console.log('Authorization Middleware', req.headers.authorization);
+
 	passport.authenticate('jwt', { session: false }, function (err, user, info) {
 		if (err) return next(err);
 

@@ -1,8 +1,12 @@
+import { IUserModel } from './../types/user.types';
 import { imageUploader } from './../utils/uploader';
 import { NextFunction, Request, Response } from 'express';
 import { Product } from '../models';
 import slugify from 'slugify';
+import { IProduct } from '../types/products.types';
+import UserModel from '../models/User.model';
 
+//TODO : make float price as virtual field in product model
 const getAllProducts = async (req: Request, res: Response, next: NextFunction) => {
 	const products = await Product.find({});
 	if (!products) {
@@ -12,8 +16,12 @@ const getAllProducts = async (req: Request, res: Response, next: NextFunction) =
 			error: 'No products found',
 		});
 	}
+	const productsWithPrice = products.map((product: IProduct) => {
+		const price = product.price;
+		return { ...product._doc, price: parseFloat(price.toString()) };
+	});
 
-	return res.json({ success: true, data: { products }, error: null });
+	return res.json({ success: true, data: { products: productsWithPrice }, error: null });
 };
 
 const getProductById = async (req: Request, res: Response, next: NextFunction) => {
@@ -192,6 +200,56 @@ const getCategories = async (req: Request, res: Response, next: NextFunction) =>
 	return res.json({ success: true, data: { categories }, error: null });
 };
 
+const toggleLikeProduct = async (req: Request, res: Response, next: NextFunction) => {
+	const { id } = req.body;
+	const userId: string = req.user.id;
+
+	const [product, user]: [IProduct | null, IUserModel | null] = await Promise.all([
+		Product.findById(id),
+		UserModel.findById(userId),
+	]);
+
+	if (!product) {
+		return res.json({
+			success: false,
+			data: null,
+			error: 'No product found',
+		});
+	}
+
+	if (!user) {
+		return res.json({
+			success: false,
+			data: null,
+			error: 'No user found',
+		});
+	}
+
+	if (product.likedBy.includes(userId) && user.likedProducts.includes(id)) {
+		console.log('here');
+
+		console.log(typeof id);
+		user.likedProducts = user.likedProducts.filter((p: string) => p != id);
+		product.likedBy = product.likedBy.filter((u: string) => {
+			console.log(u, userId);
+			return u != userId;
+		});
+		console.log({ user, product })
+
+	} else {
+		product.likedBy.push(userId);
+		user.likedProducts.push(id);
+	}
+
+	const [savedProduct, savedUser] = await Promise.all([product.save(), user.save()]);
+
+	return res.json({
+		success: true,
+		data: { product: savedProduct, user: savedUser },
+		error: null,
+	});
+};
+
 export default {
 	getAllProducts,
 	getProductById,
@@ -200,4 +258,5 @@ export default {
 	deleteProduct,
 	createProductReview,
 	getCategories,
+	toggleLikeProduct,
 };
